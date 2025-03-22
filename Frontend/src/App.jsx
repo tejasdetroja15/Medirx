@@ -5,6 +5,7 @@ import SymptomChecker from "./components/symptom-checker";
 import PrescriptionManager from "./components/prescription-manager";
 import MedicineSearch from "./components/medicine-search";
 import Footer from "./components/footer";
+import Medicines from './components/medicine-display';
 
 function App() {
 
@@ -14,9 +15,12 @@ function App() {
         <Header />
         <main className="flex-grow">
           <Hero />
-          <SymptomChecker />
-          <PrescriptionManager />
-          <MedicineSearch />
+          <Medicines />
+          <div className='three-sections'>
+            <SymptomChecker />
+            <PrescriptionManager />
+            <MedicineSearch />
+          </div>
         </main>
         <Footer />
       </div>

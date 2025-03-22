@@ -31,12 +31,10 @@ export default function SymptomChecker() {
     <section id="symptom-checker" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center">Symptom Checker</h2>
-        <Card className="max-w-2xl mx-auto">
-          <CardHeader>
-            <CardHeader>Enter your symptoms</CardHeader>
-          </CardHeader>
+        <Card className="max-w-2xl mx-auto sympton-card">
+            <CardHeader className="sy-heading">Enter your symptoms</CardHeader>
           <CardBody>
-            <div className="flex mb-4">
+            <div className="flex mb-4 sy-input">
               <Input
                 type="text"
                 placeholder="Enter a symptom"

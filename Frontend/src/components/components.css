@@ -3,18 +3,23 @@
     justify-content: space-around;
     align-items: center;
     height: auto;
-    width: 100%;
+    width: auto;
+    margin-top: 20px;
     padding: 10px;
     background: #00000080;
     border-radius: 20px;
 }
 .navi{
     display: flex;
-    justify-content: space-evenly;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 40px;
 }
 .navi li{
-    list-style-type: none;   
+    list-style-type: none; 
+}
+.navi .alink{
+    color: #fff;
+    text-decoration: none;
 }
 
 .hero-txt{
@@ -27,11 +32,35 @@
     height: auto;
     width: 10rem;
 }
+.sub-head{
+    font-size: large;
+}
 
+
+.containers{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    
+}
+.contain{
+    border-radius: 20px;
+    padding: 2rem;
+    background: #00000060;
+}
+.contain img{
+    border-radius: 10px;
+}
+.label{
+    display: flex;
+    justify-content: space-between;
+
+}
 .footer{
-    margin-top: 40px;
+    justify-content: center;
+    margin-bottom: 20px;
     height: auto;
-    width: 80dvw;
+    width: 100%;
     padding: 40px 20px;
     border-radius: 20px;
     background: #00000060;
@@ -57,4 +86,67 @@
 } 
 .contact{
     text-align: left;
+}
+
+.sympton-card{
+    padding: 20px;
+    height: 40dvh;
+    width: auto;
+    background: #00000060;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.sy-heading{
+    font-size: larger;
+}
+.sy-input input{
+    margin: 20px;
+    border: #fff solid 1px;
+    border-radius: 10px;
+    width: 15rem;
+    height: 2rem;
+}
+
+.sy-input button{
+    margin: 20px;
+}
+
+.prec-card{
+    padding: 20px;
+    height: 40dvh;
+    width: auto;
+    background: #00000060;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.prec-card textarea{
+    border: #fff solid 1px;
+    border-radius: 10px;
+    width: 15rem;
+    margin: 20px;
+}
+
+.search-card{
+    padding: 20px;
+    height: 40dvh;
+    width: auto;
+    background: #00000060;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.search-head{
+    font-size: larger;
+}
+.search-card input{
+    margin: 20px;
+    border: #fff solid 1px;
+    border-radius: 10px;
+    width: 15rem;
+    height: 2rem;
 }

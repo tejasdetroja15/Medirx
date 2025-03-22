@@ -26,7 +26,7 @@ export default function PrescriptionManager() {
         <h2 className="text-3xl font-bold mb-8 text-center">
           Prescription Manager
         </h2>
-        <Card className="max-w-2xl mx-auto">
+        <Card className="max-w-2xl mx-auto prec-card">
           <CardHeader>
             <CardHeader>Add New Prescription</CardHeader>
           </CardHeader>

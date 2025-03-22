@@ -10,7 +10,7 @@ export default function MedicineSearch() {
   const [searchResults, setSearchResults] = useState([]);
 
   const searchMedicines = () => {
-    // In a real application, this would call an API to search for medicines
+    // In real application call an API to search for medicines
     const dummyResults = [
       { id: 1, name: "Paracetamol", price: 5.99 },
       { id: 2, name: "Ibuprofen", price: 6.99 },
@@ -25,8 +25,8 @@ export default function MedicineSearch() {
         <h2 className="text-3xl font-bold mb-8 text-center">
           Find and Order Medicines
         </h2>
-        <Card className="max-w-2xl mx-auto">
-          <CardHeader>
+        <Card className="max-w-2xl mx-auto search-card">
+          <CardHeader className="search-head">
             Search for Medicines
           </CardHeader>
           <CardBody>

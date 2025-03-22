@@ -7,14 +7,14 @@ export default function Header() {
     <header className="bg-white shadow-sm">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center head">
         <Link href="/" className="text-2xl font-bold text-primary">
-          PharmaCare
+          MediRx
         </Link>
         <nav>
           <ul className="flex space-x-4 navi">
             <li>
               <Link
                 href="#symptom-checker"
-                className="text-gray-600 hover:text-primary"
+                className="text-gray-600 hover:text-primary alink"
               >
                 Symptom Checker
               </Link>
@@ -22,7 +22,7 @@ export default function Header() {
             <li>
               <Link
                 href="#prescription"
-                className="text-gray-600 hover:text-primary"
+                className="text-gray-600 hover:text-primary alink"
               >
                 Prescriptions
               </Link>
@@ -30,7 +30,7 @@ export default function Header() {
             <li>
               <Link
                 href="#medicine-search"
-                className="text-gray-600 hover:text-primary"
+                className="text-gray-600 hover:text-primary alink"
               >
                 Find Medicines
               </Link>
