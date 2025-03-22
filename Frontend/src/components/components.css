@@ -1,0 +1,60 @@
+.head{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    background: #00000080;
+    border-radius: 20px;
+}
+.navi{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+.navi li{
+    list-style-type: none;   
+}
+
+.hero-txt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hero-btn{
+    height: auto;
+    width: 10rem;
+}
+
+.footer{
+    margin-top: 40px;
+    height: auto;
+    width: 80dvw;
+    padding: 40px 20px;
+    border-radius: 20px;
+    background: #00000060;
+}
+.footmain{
+    display: flex;
+    justify-content: space-around;
+    gap: 20vw;
+}
+.name h3{
+    text-align: left;
+}
+.name p{
+    text-align: left;
+}
+.quicklinks ul{
+    text-align: left;
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+} 
+.contact{
+    text-align: left;
+}
