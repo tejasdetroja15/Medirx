@@ -1,0 +1,314 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  min-width: 1024px; /* Set minimum width for desktop */
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Navbar Styles - Desktop Only */
+.navbar {
+  background-color: #3b82f6;
+  color: white;
+  padding: 1rem 0;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 1.5rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #bfdbfe;
+}
+
+.auth-buttons {
+  display: flex;
+}
+
+.login-btn, .signup-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  margin-left: 0.75rem;
+  transition: background-color 0.2s;
+}
+
+.login-btn {
+  background-color: #3b82f6;
+}
+
+.login-btn:hover {
+  background-color: #2563eb;
+}
+
+.signup-btn {
+  background-color: #22c55e;
+}
+
+.signup-btn:hover {
+  background-color: #16a34a;
+}
+
+/* Medicines Section */
+.medicines-section {
+  padding: 3rem 0;
+  background-color: #f3f4f6;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.medicine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.medicine-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.medicine-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.medicine-card h3 {
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.price {
+  color: #4b5563;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.add-cart-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.add-cart-btn:hover {
+  background-color: #2563eb;
+}
+
+/* Symptom Checker Section */
+.symptom-section {
+  padding: 3rem 0;
+  background-color: white;
+}
+
+.symptom-checker {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.check-btn {
+  width: 100%;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.check-btn:hover {
+  background-color: #2563eb;
+}
+
+.suggestions {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: #eff6ff;
+  border-radius: 0.5rem;
+  border-left: 4px solid #3b82f6;
+}
+
+.suggestions h3 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #1e40af;
+}
+
+.suggestions ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  margin-bottom: 1rem;
+}
+
+.suggestions li {
+  margin-bottom: 0.5rem;
+}
+
+.disclaimer {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #dbeafe;
+}
+
+/* Footer Styles */
+.footer {
+  margin-top: auto;
+  background-color: #1f2937;
+  color: white;
+  padding: 3rem 0 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-brand {
+  width: 30%;
+}
+
+.footer-brand h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  color: #9ca3af;
+  font-size: 1.1rem;
+}
+
+.footer-links {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.link-group {
+  width: 33%;
+}
+
+.link-group h4 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.link-group ul li {
+  margin-bottom: 0.5rem;
+}
+
+.link-group a {
+  color: #9ca3af;
+  transition: color 0.2s;
+}
+
+.link-group a:hover {
+  color: white;
+}
+
+.copyright {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #374151;
+  text-align: center;
+  color: #9ca3af;
+}

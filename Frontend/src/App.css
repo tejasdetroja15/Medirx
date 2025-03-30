@@ -1,16 +1,1 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0rem;
-  text-align: center;
-}
 
-.flex-grow{
-  justify-content: center;
-}
-
-.three-sections{
-  display: flex;
-  justify-content: space-evenly;
-  margin: 2rem;
-}
