@@ -312,3 +312,57 @@ ul {
   text-align: center;
   color: #9ca3af;
 }
+
+/* Cart Icon in Nav */
+.cart-icon {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-right: 1rem;
+  position: relative;
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.cart-icon:hover {
+  background-color: #2563eb;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ef4444;
+  color: white;
+  font-size: 0.75rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add to cart button in suggestions */
+.suggestions li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.add-suggestion-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  transition: background-color 0.2s;
+}
+
+.add-suggestion-btn:hover {
+  background-color: #2563eb;
+}
