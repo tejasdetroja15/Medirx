@@ -16,7 +16,7 @@ module.exports.registerUser = async (req, res, next) => {
 
         const { fullname, email, password } = req.body;
 
-        // Check if user already exists
+        
         console.log(`Checking if user with email ${email} already exists`);
         const existingUser = await userService.findUserByEmail(email);
         console.log(`User exists: ${!!existingUser}`);
@@ -24,23 +24,18 @@ module.exports.registerUser = async (req, res, next) => {
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        const hashPassword = await userModel.hashPassword(password);
-
-        // Remove the checkUserExists call in createUser by modifying your service call
         const user = await userModel.create({
             fullname: {
                 firstname: fullname.firstname,
                 lastname: fullname.lastname
             },
             email,
-            password: hashPassword
+            password 
         });
 
-        // Generate OTP for email verification
         const otp = user.generateOTP();
-        await user.save();
+        await user.save(); // Ensure the user is saved after generating OTP
 
-        // Send verification email
         await emailService.sendVerificationEmail(email, otp, fullname.firstname);
 
         res.status(201).json({ 
@@ -48,10 +43,11 @@ module.exports.registerUser = async (req, res, next) => {
             userId: user._id 
         });
     } catch (error) {
-        console.error('Registration error:', error);
+        console.error('Registration error:', error); 
         res.status(500).json({ message: 'Server error during registration', error: error.message });
     }
 };
+
 module.exports.verifyEmail = async (req, res, next) => {
     try {
         const errors = validationResult(req);
@@ -74,10 +70,10 @@ module.exports.verifyEmail = async (req, res, next) => {
             return res.status(400).json({ message: 'Invalid or expired OTP' });
         }
 
-        // Mark user as verified
+        
         user.isVerified = true;
         user.otp = undefined;
-        await user.save();
+        await user.save(); 
 
         const token = user.generateAuthToken();
         res.status(200).json({ 
@@ -91,7 +87,7 @@ module.exports.verifyEmail = async (req, res, next) => {
             }
         });
     } catch (error) {
-        console.error('Email verification error:', error);
+        console.error('Email verification error:', error); // Log errors for debugging
         res.status(500).json({ message: 'Server error during email verification', error: error.message });
     }
 };
@@ -114,11 +110,9 @@ module.exports.resendOTP = async (req, res, next) => {
             return res.status(400).json({ message: 'Email already verified' });
         }
 
-        // Generate new OTP
         const otp = user.generateOTP();
         await user.save();
 
-        // Send verification email
         await emailService.sendVerificationEmail(email, otp, user.fullname.firstname);
 
         res.status(200).json({ message: 'OTP resent successfully' });
@@ -138,6 +132,7 @@ module.exports.loginUser = async (req, res, next) => {
         const { email, password } = req.body;
 
         const user = await userModel.findOne({ email }).select('+password');
+        
         if (!user) {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
@@ -189,14 +184,11 @@ module.exports.forgotPassword = async (req, res, next) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        // Generate reset token
         const resetToken = user.generateResetPasswordToken();
         await user.save();
 
-        // Create reset URL
         const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
 
-        // Send password reset email
         await emailService.sendPasswordResetEmail(email, resetUrl, user.fullname.firstname);
 
         res.status(200).json({ message: 'Password reset email sent successfully' });
@@ -215,20 +207,17 @@ module.exports.resetPassword = async (req, res, next) => {
 
         const { token, password } = req.body;
 
-        // Hash the token from the URL
         const hashedToken = crypto
             .createHash('sha256')
             .update(token)
             .digest('hex');
 
-        // Find user with the token and check if token is still valid
         const user = await userService.findUserByResetToken(hashedToken);
 
         if (!user) {
             return res.status(400).json({ message: 'Invalid or expired password reset token' });
         }
 
-        // Update password
         await userService.updatePassword(user, password);
 
         res.status(200).json({ message: 'Password reset successful. You can now login with your new password.' });

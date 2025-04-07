@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     fullname: {
         firstname: {
             type: String,
-            required: true, 
+            required: true,
             minlength: [3, 'First name must be at least 3 characters long'],
         },
         lastname: {
@@ -31,14 +31,8 @@ const userSchema = new mongoose.Schema({
         default: false
     },
     otp: {
-        code: {
-            type: String,
-            select: false
-        },
-        expiresAt: {
-            type: Date,
-            select: false
-        }
+        code: { type: String, select: false },
+        expiresAt: { type: Date, select: false }
     },
     resetPasswordToken: {
         type: String,
@@ -48,72 +42,49 @@ const userSchema = new mongoose.Schema({
         type: Date,
         select: false
     },
-    socketId: {
-        type: String,
-    },
+    socketId: { type: String },
     createdAt: {
         type: Date,
         default: Date.now
     }
 }, { timestamps: true });
 
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) return next();
+    try {
+        this.password = await bcrypt.hash(this.password, 10);
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
 
 userSchema.methods.generateAuthToken = function () {
-    const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
-    return token;
+    return jwt.sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
 };
-
 
 userSchema.methods.comparePassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
-userSchema.statics.hashPassword = async function (password) {
-    return await bcrypt.hash(password, 10);
-};
-
 userSchema.methods.generateOTP = function () {
-    // Generate a 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    
-    // Set OTP expiration time (10 minutes)
     const expiresAt = new Date();
     expiresAt.setMinutes(expiresAt.getMinutes() + 10);
-    
-    this.otp = {
-        code: otp,
-        expiresAt: expiresAt
-    };
-    
+    this.otp = { code: otp, expiresAt };
     return otp;
 };
 
 userSchema.methods.verifyOTP = function (submittedOTP) {
-    // Check if OTP has expired
-    if (this.otp.expiresAt < new Date()) {
-        return false;
-    }
-    
-    // Check if OTP matches
-    return this.otp.code === submittedOTP;
+    return this.otp.expiresAt > new Date() && this.otp.code === submittedOTP;
 };
 
 userSchema.methods.generateResetPasswordToken = function () {
-    // Generate a random token
     const resetToken = crypto.randomBytes(20).toString('hex');
-    
-    // Hash the token and set to resetPasswordToken field
-    this.resetPasswordToken = crypto
-        .createHash('sha256')
-        .update(resetToken)
-        .digest('hex');
-    
-    // Set token expiration (10 minutes)
+    this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
     this.resetPasswordExpires = Date.now() + 10 * 60 * 1000;
-    
     return resetToken;
 };
 
 const userModel = mongoose.model('user', userSchema);
-
-module.exports = userModel; 
+module.exports = userModel;

@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
+require('dotenv').config(); // Load environment variables
 
-// Database connection URL - replace 'your_database_name' with your actual database name
-const dbURI = 'mongodb://localhost/your_database_name';
+// Use MONGO_URI from .env
+const dbURI = process.env.MONGO_URI;
 
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(dbURI);
+    await mongoose.connect(dbURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
     console.log(`MongoDB Connected: ${mongoose.connection.host}`);
   } catch (err) {
     console.error(`Error connecting to MongoDB: ${err.message}`);

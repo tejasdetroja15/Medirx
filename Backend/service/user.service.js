@@ -21,7 +21,13 @@ module.exports.createUser = async ({
 };
 
 module.exports.findUserByEmail = async (email) => {
-    return await userModel.findOne({ email });
+    try {
+        console.log(`Finding user by email: ${email}`); 
+        return await userModel.findOne({ email });
+    } catch (error) {
+        console.error('Error finding user by email:', error); 
+        throw error;
+    }
 };
 
 module.exports.findUserById = async (id) => {
@@ -40,7 +46,7 @@ module.exports.updatePassword = async (user, newPassword) => {
     user.password = hashedPassword;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;
-    return await user.save();
+    return await user.save(); 
 };
 
 module.exports.findUserByResetToken = async (hashedToken) => {
