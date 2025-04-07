@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./MediRxHomepage.css";
+import PrescriptionChecker from "./PrescriptionChecker"; // Import the new component
+
 
 const MediRxHomepage = () => {
   const [symptoms, setSymptoms] = useState("");
@@ -187,6 +189,8 @@ const MediRxHomepage = () => {
           </div>
         </div>
       </section>
+
+      <PrescriptionChecker />
 
       {/* Footer Section */}
       <footer className="footer">
