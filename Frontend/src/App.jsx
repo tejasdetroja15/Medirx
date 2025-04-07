@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MediRxHomepage from "./MediRxHomepage";
 import Cart from "./Cart";
+import "./App.css";
 
 function App() {
   return (
