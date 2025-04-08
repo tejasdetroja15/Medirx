@@ -18,6 +18,10 @@ const MediRxHomepage = () => {
     { id: 4, name: "Cetirizine 10mg", price: 4.99 },
     { id: 5, name: "Omeprazole 20mg", price: 7.49 },
     { id: 6, name: "Aspirin 100mg", price: 3.99 },
+    { id: 7, name: "Aspirin 100mg", price: 3.99 },
+    { id: 8, name: "Aspirin 100mg", price: 3.99 },
+    { id: 9, name: "Aspirin 100mg", price: 3.99 },
+    { id: 10, name: "Aspirin 100mg", price: 3.99 },
   ];
 
   // Sample symptom-medicine mapping
@@ -97,7 +101,7 @@ const MediRxHomepage = () => {
       {/* Navbar */}
       <nav className="navbar">
         <div className="container">
-          <div className="brand">MediRx</div>
+          <div className="brand"> <img src="/medirx.jpg" alt="logo" height={30} width={30}/>MediRx</div>
           <div className="nav-links">
             <a href="#symptom-checker">Symptom Checker</a>
             <a href="#prescription">Prescription Checker</a>
